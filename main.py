@@ -12,6 +12,10 @@ def main():
         fff = Image.new(logo.mode, logo.size, (255,) * 4)
         background = Image.new("RGBA", device.size, "white")
         posn = ((device.width - logo.width) // 2, 0)
+        rot = logo.rotate(0, resample=Image.BILINEAR)
+        img = Image.composite(rot, fff, rot)
+        background.paste(img, posn)
+        device.display(background.convert(device.mode))
 
 
 
