@@ -7,8 +7,10 @@ import qrcode
 
 def main():
     while True:
+        size= 128, 64
         qrstr=input("Input String : ")
         logo=qrcode.make(qrstr).convert("RGBA")
+        logo.thumbnail(size,Image.ANTIALIAS)
         fff = Image.new(logo.mode, logo.size, (255,) * 4)
         background = Image.new("RGBA", device.size, "white")
         posn = ((device.width - logo.width) // 2, 0)
