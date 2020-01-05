@@ -4,5 +4,7 @@ from PIL import Image
 import qrcode
 
 device = get_device()
-background="test"
-device.display(background.convert(device.mode))
+with canvas(device) as draw:
+    draw.rectangle(device.bounding_box, outline="white", fill="black")
+    draw.text((10, 40), "Hello World", fill="white")
+sleep(10)
