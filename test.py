@@ -4,4 +4,5 @@ from PIL import Image
 import qrcode
 
 device = get_device()
-device.display("Hey")
+background="test"
+device.display(background.convert(device.mode))
