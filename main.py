@@ -30,7 +30,7 @@ def displayQR(qrstr):
 def displayText(textstr):
     img = Image.new('RGBA', device.size)
 
-    fnt = ImageFont.truetype('/Library/Fonts/Arial.ttf', 15)
+    fnt = ImageFont.truetype('./Bebas-Regular.ttf', 15)
     d = ImageDraw.Draw(img)
     d.text((10,10), textstr,font=fnt, fill=(0,0,0))
     displayIMG(img)
