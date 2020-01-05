@@ -5,14 +5,24 @@ import qrcode
 
 
 
+
 def main():
     while True:
-        size= 128, 64
-        qrstr=input("Input String : ")
-        logo=qrcode.make(qrstr).convert("RGBA")
-        logo.thumbnail(size,Image.ANTIALIAS)
+        qrstr="Hey"
+        # qrstr=input("Input String : ")
+        qr = qrcode.QRCode(
+            version=1,
+            error_correction=qrcode.constants.ERROR_CORRECT_L,
+            box_size=10,
+            border=0,
+        )
+        qr.add_data(qrstr)
+        qr.make(fit=True)
+        img = qr.make_image(fill_color="white", back_color="black")
+        logo=img.convert("RGBA")
+        logo.thumbnail(device.size,Image.ANTIALIAS)
         fff = Image.new(logo.mode, logo.size, (255,) * 4)
-        background = Image.new("RGBA", device.size, "blue")
+        background = Image.new("RGBA", device.size, "black")
         posn = ((device.width - logo.width) // 2, 0)
         rot = logo.rotate(0, resample=Image.BILINEAR)
         img = Image.composite(rot, fff, rot)
