@@ -12,7 +12,7 @@ def main():
         logo=qrcode.make(qrstr).convert("RGBA")
         logo.thumbnail(size,Image.ANTIALIAS)
         fff = Image.new(logo.mode, logo.size, (255,) * 4)
-        background = Image.new("RGBA", device.size, "white")
+        background = Image.new("RGBA", device.size, "blue")
         posn = ((device.width - logo.width) // 2, 0)
         rot = logo.rotate(0, resample=Image.BILINEAR)
         img = Image.composite(rot, fff, rot)
